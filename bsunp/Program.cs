@@ -1,5 +1,7 @@
 ﻿/* Author: daemon1 (zenhax)
  * Re-compiled by xyx0826
+ * 
+ * This branch is designed for quickly extracting sound banks in game assets.
  */
 
 using System;
@@ -13,7 +15,7 @@ namespace bitsquid_unp
         private static void Main(string[] args)
         {
             Console.WriteLine("Bitsquid Toolchain - bsunp (bitsquid_unp) by daemon1");
-            Console.WriteLine("Modified by xyx0826 || !Timpany-only Branch!");
+            Console.WriteLine("Modified by xyx0826 || !Timpani-only Branch!");
             Console.WriteLine("Usage: bsunp.exe [package-name]");
             if (args.Length == 0) // If no parameters are given
             {
@@ -26,9 +28,6 @@ namespace bitsquid_unp
             FileStream packageFile = new FileStream(args[0], FileMode.Open);
             BinaryReader binaryReader = new BinaryReader(packageFile);
             MemoryStream memoryStream = new MemoryStream();
-            String path = Path.GetDirectoryName(
-                System.Reflection.Assembly.GetExecutingAssembly().Location);
-
             // Check if stream file exists with package file
             FileStream streamFile = null;
             if (File.Exists(args[0] + ".stream"))
@@ -55,18 +54,16 @@ namespace bitsquid_unp
             }
             binaryReader = new BinaryReader(memoryStream);
             memoryStream.Seek(4L, SeekOrigin.Begin);
-
-            Directory.CreateDirectory(path + "\\bsunp_extracted");
-
+            
             // Write data.bin
             byte[] buffer2 = new byte[288];
             binaryReader.Read(buffer2, 0, 288);
-            FileStream dataFile = new FileStream(path + "\\bsunp_extracted\\data.bin", FileMode.Create);
+            FileStream dataFile = new FileStream("data.bin", FileMode.Create);
             dataFile.Write(buffer2, 0, 288);
             dataFile.Close();
             memoryStream.Seek(0L, SeekOrigin.Begin);
 
-            if (!File.Exists(path + "\\hashdict.txt"))
+            if (!File.Exists("hashdict.txt"))
             {
                 Console.WriteLine("ERROR: hashdict.txt not found.");
                 Console.ReadKey();
@@ -74,7 +71,7 @@ namespace bitsquid_unp
             }
 
             // Read hash dictionary
-            StreamReader streamReader = new StreamReader(path + "\\hashdict.txt");
+            StreamReader streamReader = new StreamReader("hashdict.txt");
             int hashCount = Convert.ToInt32(streamReader.ReadLine());
             ulong[] hashes = new ulong[hashCount];
             string[] types = new string[hashCount];
@@ -157,23 +154,23 @@ namespace bitsquid_unp
                     byte[] array6 = new byte[array3[i]];
                     memoryStream.Read(array6, 0, array3[i]);
                     // This is the timpany-only branch
-                    if (outputFileName.Contains("timpany"))
-                        File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName, array6);
-                    else Console.WriteLine("Skipping file " + outputFileName + ": not a timpany");
+                    if (outputType.Contains("timpani"))
+                        File.WriteAllBytes(outputFileName, array6);
+                    else Console.WriteLine("Skipping file " + outputFileName + ": not a timpani");
 
                     if (streamFile != null && array5[i] > 0)
                     {
                         byte[] array7 = new byte[array5[i]];
                         streamFile.Read(array7, 0, array5[i]);
                         // This is the timpany-only branch
-                        if (outputFileName.Contains("timpany"))
-                            File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName + ".stream", array7);
-                        else Console.WriteLine("Skipping file " + outputFileName + ": not a timpany");
+                        if (outputType.Contains("timpani"))
+                            File.WriteAllBytes(outputFileName + ".stream", array7);
+                        else Console.WriteLine("Skipping file " + outputFileName + ": not a timpani");
                     }
                 }
             }
             Console.WriteLine("Extraction complete.");
-            Console.ReadKey();
+            // Console.ReadKey();
         }
     }
 }
