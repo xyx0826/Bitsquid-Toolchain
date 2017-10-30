@@ -13,7 +13,7 @@ namespace bitsquid_unp
         private static void Main(string[] args)
         {
             Console.WriteLine("Bitsquid Toolchain - bsunp (bitsquid_unp) by daemon1");
-            Console.WriteLine("Modified by xyx0826");
+            Console.WriteLine("Modified by xyx0826 || !Timpany-only Branch!");
             Console.WriteLine("Usage: bsunp.exe [package-name]");
             if (args.Length == 0) // If no parameters are given
             {
@@ -156,13 +156,19 @@ namespace bitsquid_unp
                     }
                     byte[] array6 = new byte[array3[i]];
                     memoryStream.Read(array6, 0, array3[i]);
-                    File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName, array6);
+                    // This is the timpany-only branch
+                    if (outputFileName.Contains("timpany"))
+                        File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName, array6);
+                    else Console.WriteLine("Skipping file " + outputFileName + ": not a timpany");
 
                     if (streamFile != null && array5[i] > 0)
                     {
                         byte[] array7 = new byte[array5[i]];
                         streamFile.Read(array7, 0, array5[i]);
-                        File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName + ".stream", array7);
+                        // This is the timpany-only branch
+                        if (outputFileName.Contains("timpany"))
+                            File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName + ".stream", array7);
+                        else Console.WriteLine("Skipping file " + outputFileName + ": not a timpany");
                     }
                 }
             }
