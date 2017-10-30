@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsunp", "bsunp\bsunp.csproj", "{CB578AE0-E567-4EC8-BF4E-046B1EFCB7DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bstim", "bstim\bstim.csproj", "{7A216872-A54A-41A3-9E96-7930F0B095AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB578AE0-E567-4EC8-BF4E-046B1EFCB7DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB578AE0-E567-4EC8-BF4E-046B1EFCB7DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB578AE0-E567-4EC8-BF4E-046B1EFCB7DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB578AE0-E567-4EC8-BF4E-046B1EFCB7DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A216872-A54A-41A3-9E96-7930F0B095AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A216872-A54A-41A3-9E96-7930F0B095AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A216872-A54A-41A3-9E96-7930F0B095AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A216872-A54A-41A3-9E96-7930F0B095AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
