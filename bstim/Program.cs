@@ -70,10 +70,6 @@ namespace bitsquid_timpani
                 }
             }
             long num3 = 0L;
-
-            String path = Path.GetDirectoryName(
-                System.Reflection.Assembly.GetExecutingAssembly().Location);
-            Directory.CreateDirectory(path + "\\bsunp_extracted");
             while (num3 < fileCounts)
             {
                 bankFile.Seek(array[(int)(checked(num3))], SeekOrigin.Begin);
@@ -94,14 +90,14 @@ namespace bitsquid_timpani
                     binaryReader.ReadInt16();
                     int bits = binaryReader.ReadInt16();
                     binaryReader.ReadInt32();
-                    fileStream3 = new FileStream(path + "\\bsunp_extracted\\" + outFileName[(int)(checked(num3))].ToString("X16") + ".wav", FileMode.Create);
+                    fileStream3 = new FileStream(outFileName[(int)(checked(num3))].ToString("X16") + ".wav", FileMode.Create);
                     BinaryWriter bw = new BinaryWriter(fileStream3);
                     WriteWavHeader(bw, channels, bits, samplerate, bytes);
                     goto IL_1D1;
                 }
                 if (num5 == 22127)
                 {
-                    fileStream3 = new FileStream(path + "\\bsunp_extracted\\" + outFileName[(int)(checked(num3))].ToString("X16") + ".ogg", FileMode.Create);
+                    fileStream3 = new FileStream(outFileName[(int)(checked(num3))].ToString("X16") + ".ogg", FileMode.Create);
                     bankFile.Seek((array[(int)(checked(num3))] + 68), SeekOrigin.Begin);
                     goto IL_1D1;
                 }

@@ -56,12 +56,12 @@ namespace bitsquid_unp
             binaryReader = new BinaryReader(memoryStream);
             memoryStream.Seek(4L, SeekOrigin.Begin);
 
-            Directory.CreateDirectory(path + "\\bsunp_extracted");
+            Directory.CreateDirectory(path + "\\extracted");
 
             // Write data.bin
             byte[] buffer2 = new byte[288];
             binaryReader.Read(buffer2, 0, 288);
-            FileStream dataFile = new FileStream(path + "\\bsunp_extracted\\data.bin", FileMode.Create);
+            FileStream dataFile = new FileStream(path + "\\extracted\\data.bin", FileMode.Create);
             dataFile.Write(buffer2, 0, 288);
             dataFile.Close();
             memoryStream.Seek(0L, SeekOrigin.Begin);
@@ -156,13 +156,13 @@ namespace bitsquid_unp
                     }
                     byte[] array6 = new byte[array3[i]];
                     memoryStream.Read(array6, 0, array3[i]);
-                    File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName, array6);
+                    File.WriteAllBytes(path + "\\extracted\\" + outputFileName, array6);
 
                     if (streamFile != null && array5[i] > 0)
                     {
                         byte[] array7 = new byte[array5[i]];
                         streamFile.Read(array7, 0, array5[i]);
-                        File.WriteAllBytes(path + "\\bsunp_extracted\\" + outputFileName + ".stream", array7);
+                        File.WriteAllBytes(path + "\\extracted\\" + outputFileName + ".stream", array7);
                     }
                 }
             }
