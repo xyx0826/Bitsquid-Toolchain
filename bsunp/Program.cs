@@ -63,7 +63,10 @@ namespace bitsquid_unp
             dataFile.Close();
             memoryStream.Seek(0L, SeekOrigin.Begin);
 
-            if (!File.Exists("hashdict.txt"))
+            String path = Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            if (!File.Exists(path + "\\hashdict.txt"))
             {
                 Console.WriteLine("ERROR: hashdict.txt not found.");
                 Console.ReadKey();
