@@ -74,7 +74,7 @@ namespace bitsquid_unp
             }
 
             // Read hash dictionary
-            StreamReader streamReader = new StreamReader("hashdict.txt");
+            StreamReader streamReader = new StreamReader(path + "\\hashdict.txt");
             int hashCount = Convert.ToInt32(streamReader.ReadLine());
             ulong[] hashes = new ulong[hashCount];
             string[] types = new string[hashCount];
